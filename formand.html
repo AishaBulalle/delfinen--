@@ -18,33 +18,15 @@
     </nav>
 
     <main>
-      <button id="btn-create-post">Tilføj nyt medlem</button>
+      <button id="btn-create-medlem">Tilføj nyt medlem</button>
       <h1>Svømmeklubben Delfinen🐬</h1>
-
-      <section class="tools-grid">
-        <label for="select-sort-by"
-          >Sorter efter:
-          <select id="select-sort-by">
-            <option value="" selected>Not selected</option>
-            <option value="Aktivitetsform">Aktivitetsform</option>
-          </select>
-        </label>
-        <div>
-          <label for="input-search">Søg:</label>
-          <input
-            type="search"
-            id="input-search"
-            placeholder="Søg efter titel"
-          />
-        </div>
-      </section>
-      <section id="posts" class="grid-container"></section>
+      <section id="medlem" class="grid-container"></section>
     </main>
 
     <!-- dialog - create new post -->
-    <dialog id="dialog-create-post">
+    <dialog id="dialog-create-medlem">
       <h2>Tilføj nyt medlem</h2>
-      <form id="form-create-post" method="dialog" class="dialog-container">
+      <form id="form-create-medlem" method="dialog" class="dialog-container">
         <label for="name-new">Navn:</label>
         <input
           type="text"
@@ -94,12 +76,13 @@
         <p class="error-message hide">Error Message Placeholder</p>
         <button id="btn-create">Tilføj nyt medlem</button>
       </form>
+      post
     </dialog>
 
     <!-- dialog - update post -->
-    <dialog id="dialog-update-post">
-      <h2>Update post</h2>
-      <form id="form-update-post" method="dialog">
+    <dialog id="dialog-update-medlem">
+      <h2>Update medlem</h2>
+      <form id="form-update-medlem" method="dialog">
         <label for="title-update">Navn:</label>
         <input
           type="text"
@@ -144,17 +127,17 @@
           <option value="konkurrencesvømmer">konkurrencesvømmer</option>
         </select>
         <p class="error-message hide">Error Message Placeholder</p>
-        <button>Update Post</button>
+        <button>Update medlem</button>
       </form>
     </dialog>
 
     <!-- dialog - delete post -->
-    <dialog id="dialog-delete-post">
-      <h2>Do you want to delete post?</h2>
-      <p id="dialog-delete-post-title">Title of post</p>
-      <form id="form-delete-post" method="dialog">
-        <button type="button" class="btn-cancel">No</button>
-        <button>Yes</button>
+    <dialog id="dialog-delete-medlem">
+      <h2>Vil du slette dette medlem?</h2>
+      <p id="dialog-delete-medlem-title">Title of medlem</p>
+      <form id="form-delete-medlem" method="dialog">
+        <button type="button" class="btn-cancel">Nej</button>
+        <button>Ja</button>
       </form>
     </dialog>
     <script src="js/app.js" type="module"></script>

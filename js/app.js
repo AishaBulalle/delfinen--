@@ -1,31 +1,31 @@
 import {
-  getPosts,
-  createPost,
-  deletePost,
-  updatePost,
+  getMedlem,
+  createMedlem,
+  deleteMedlem,
+  updateMedlem,
 } from "./rest-service.js";
 
-let posts;
+let medlem;
 window.addEventListener("load", initApp);
 
 async function initApp() {
   console.log("app.js is runningg 🎉");
-  updatePostsGrid();
+  updateMedlemGrid();
   document
-    .querySelector("#btn-create-post")
-    .addEventListener("click", showCreatePostDialog);
+    .querySelector("#btn-create-medlem")
+    .addEventListener("click", showCreateMedlemDialog);
   document
-    .querySelector("#form-create-post")
-    .addEventListener("submit", createPostClicked);
+    .querySelector("#form-create-medlem")
+    .addEventListener("submit", createMedlemClicked);
 
   document
-    .querySelector("#form-update-post")
-    .addEventListener("submit", updatePostClicked);
+    .querySelector("#form-update-medlem")
+    .addEventListener("submit", updateMedlemClicked);
   document
-    .querySelector("#form-delete-post")
-    .addEventListener("submit", deletePostClicked);
+    .querySelector("#form-delete-medlem")
+    .addEventListener("submit", deleteMedlemClicked);
   document
-    .querySelector("#form-delete-post .btn-cancel")
+    .querySelector("#form-delete-medlem .btn-cancel")
     .addEventListener("click", deleteCancelClicked);
   document
     .querySelector("#select-sort-by")
@@ -38,53 +38,53 @@ async function initApp() {
     .addEventListener("search", inputSearchChanged);
 }
 
-function showPosts(listOfPosts) {
-  document.querySelector("#posts").innerHTML = ""; // reset the content of section#posts
+function showMedlemmer(listOfMedlem) {
+  document.querySelector("#medlem").innerHTML = ""; // reset the content of section#posts
 
-  for (const post of listOfPosts) {
-    showPost(post); // for every post object in listOfPosts, call showPost
+  for (const medlem of listOfMedlem) {
+    showMedlem(medlem); // for every post object in listOfPosts, call showPost
   }
 }
 
-async function showPost(postObject) {
+async function showMedlem(medlemObject) {
   const html = /*html */ `
   
   <article class="grid-item">
         <div class="avatar">
-                <img src=${postObject.billede} />
+                <img src=${medlemObject.billede} />
               <div>
-                    <h3>${postObject.navn}</h3>
-                    <p>${postObject.medlemskabstype}</p>
+                    <h3>${medlemObject.navn}</h3>
+                    <p>${medlemObject.medlemskabstype}</p>
               </div>
         </div>
         <div>
-            <img src="${postObject.billede}" />
-            <h3>${postObject.aktivitetsform}</h3>
-            <p>${postObject.svømmedisciplin}</p>
+            <img src="${medlemObject.billede}" />
+            <h3>${medlemObject.aktivitetsform}</h3>
+            <p>${medlemObject.svømmedisciplin}</p>
         <div class="btns">
               <button class="btn-delete">Delete</button>
               <button class="btn-update">Update</button>
         </div>
-    </article>
+    </article> 
   
   `;
 
-  document.querySelector("#posts").insertAdjacentHTML("beforeend", html); // append html to the DOM - section#posts
+  document.querySelector("#medlem").insertAdjacentHTML("beforeend", html); // append html to the DOM - section#posts
 
   document
-    .querySelector("#posts article:last-child .btn-delete")
-    .addEventListener("click", () => deleteClicked(postObject));
+    .querySelector("#medlem article:last-child .btn-delete")
+    .addEventListener("click", () => deleteClicked(medlemObject));
   document
-    .querySelector("#posts article:last-child .btn-update")
-    .addEventListener("click", () => updateClicked(postObject));
+    .querySelector("#medlem article:last-child .btn-update")
+    .addEventListener("click", () => updateClicked(medlemObject));
 }
 
-async function updatePostsGrid() {
-  posts = await getPosts(); // get posts from rest endpoint and save in variable
-  showPosts(posts); // show all posts (append to the DOM) with posts as argument
+async function updateMedlemGrid() {
+  medlem = await getMedlem(); // get posts from rest endpoint and save in variable
+  showMedlemmer(medlem); // show all posts (append to the DOM) with posts as argument
 }
 
-async function createPostClicked(event) {
+async function createMedlemClicked(event) {
   event.preventDefault();
 
   const form = event.target; // or "this"
@@ -96,7 +96,7 @@ async function createPostClicked(event) {
   const medlemskabstype = form.medlemskabstype.value;
   const svømmedisciplin = form.svømmedisciplin.value;
 
-  const response = await createPost(
+  const response = await createMedlem(
     navn,
     billede,
     alder,
@@ -106,9 +106,9 @@ async function createPostClicked(event) {
   ); // use values to create a new post
   // check if response is ok - if the response is successful
   if (response.ok) {
-    console.log("New post succesfully added to Firebase 🔥");
+    console.log("New medlem succesfully added to Firebase 🔥");
     form.reset(); // reset the form (clears inputs)
-    updatePostsGrid();
+    updateMedlemGrid();
     event.target.parentNode.close(); // the dialog
     hideErrorMessage();
   } else {
@@ -121,32 +121,32 @@ function sortByChanged(event) {
   const selectedValue = event.target.value;
 
   if (selectedValue === "aktivitetsform") {
-    posts.sort(compareAktivitetsform);
+    medlem.sort(compareAktivitetsform);
   }
 
-  showPosts(posts);
+  showMedlemmer(medlem);
 }
 
-function compareAktivitetsform(post1, post2) {
-  return post1.aktivitetsform.localeCompare(post2.aktivitetsform);
+function compareAktivitetsform(medlem1, medlem2) {
+  return medlem1.aktivitetsform.localeCompare(medlem2.aktivitetsform);
 }
 
 function inputSearchChanged(event) {
   const value = event.target.value;
-  const postsToShow = searchPosts(value);
-  showPosts(postsToShow);
+  const medlemToShow = searchMedlem(value);
+  showMedlemmer(medlemToShow);
 }
 
-function searchPosts(searchValue) {
+function searchMedlem(searchValue) {
   searchValue = searchValue.toLowerCase();
-  const results = posts.filter((post) =>
-    post.navn.toLowerCase().includes(searchValue)
+  const results = medlem.filter((medlem) =>
+    medlem.navn.toLowerCase().includes(searchValue)
   );
   return results;
 }
 
-function showCreatePostDialog() {
-  document.querySelector("#dialog-create-post").showModal(); // show create dialog
+function showCreateMedlemDialog() {
+  document.querySelector("#dialog-create-medlem").showModal(); // show create dialog
 }
 
 function showErrorMessage(message) {
@@ -159,39 +159,42 @@ function hideErrorMessage() {
   document.querySelector(".error-message").classList.add("hide");
 }
 
-function updateClicked(post) {
-  const updateForm = document.querySelector("#form-update-post"); // reference to update form in dialog
-  updateForm.navn.value = post.navn; // set title input in update form from post title
-  updateForm.billede.value = post.billede; // set body input in update form post body
-  updateForm.alder.value = post.alder; // set image input in update form post image
-  updateForm.aktivitetsform.value = post.aktivitetsform; // set title input in update form from post title
-  updateForm.medlemskabstype.value = post.medlemskabstype; // set body input in update form post body
-  updateForm.svømmedisciplin.value = post.svømmedisciplin; // set image input in update form post image
-  updateForm.setAttribute("data-id", post.id); // set data-id attribute of post you want to update (... to use when update)
-  document.querySelector("#dialog-update-post").showModal(); // show update modal
+function updateClicked(medlem) {
+  const updateForm = document.querySelector("#form-update-medlem"); // reference to update form in dialog
+  updateForm.navn.value = medlem.navn; // set title input in update form from post title
+  updateForm.billede.value = medlem.billede; // set body input in update form post body
+  updateForm.alder.value = medlem.alder; // set image input in update form post image
+  updateForm.aktivitetsform.value = medlem.aktivitetsform; // set title input in update form from post title
+  updateForm.medlemskabstype.value = medlem.medlemskabstype; // set body input in update form post body
+  updateForm.svømmedisciplin.value = medlem.svømmedisciplin; // set image input in update form post image
+  updateForm.setAttribute("data-id", medlem.id); // set data-id attribute of post you want to update (... to use when update)
+  document.querySelector("#dialog-update-medlem").showModal(); // show update modal
 }
 
-function deleteClicked(post) {
-  document.querySelector("#dialog-delete-post-title").textContent = post.navn; // show title of post you want to delete
-  document.querySelector("#form-delete-post").setAttribute("data-id", post.id); // set data-id attribute of post you want to delete (... to use when delete)
-  document.querySelector("#dialog-delete-post").showModal(); // show delete dialog
+function deleteClicked(medlem) {
+  document.querySelector("#dialog-delete-medlem-title").textContent =
+    medlem.navn; // show title of post you want to delete
+  document
+    .querySelector("#form-delete-medlem")
+    .setAttribute("data-id", medlem.id); // set data-id attribute of post you want to delete (... to use when delete)
+  document.querySelector("#dialog-delete-medlem").showModal(); // show delete dialog
 }
 
 function deleteCancelClicked() {
-  document.querySelector("#dialog-delete-post").close(); // close dialog
+  document.querySelector("#dialog-delete-medlem").close(); // close dialog
 }
 
-async function deletePostClicked(event) {
+async function deleteMedlemClicked(event) {
   const id = event.target.getAttribute("data-id"); // event.target is the delete form
-  const response = await deletePost(id); // call deletePost with id
+  const response = await deleteMedlem(id); // call deletePost with id
 
   if (response.ok) {
-    console.log("New post succesfully deleted from Firebase 🔥");
-    updatePostsGrid();
+    console.log("New medlem succesfully deleted from Firebase 🔥");
+    updateMedlemGrid();
   }
 }
 
-async function updatePostClicked(event) {
+async function updateMedlemClicked(event) {
   const form = event.target; // or "this"
   // extract the values from inputs from the form
   const navn = form.navn.value;
@@ -202,7 +205,7 @@ async function updatePostClicked(event) {
   const svømmedisciplin = form.svømmedisciplin.value;
 
   const id = form.getAttribute("data-id"); // get id of the post to update - saved in data-id
-  const response = await updatePost(
+  const response = await updateMedlem(
     id,
     navn,
     billede,
@@ -213,7 +216,7 @@ async function updatePostClicked(event) {
   ); // call updatePost with arguments
 
   if (response.ok) {
-    console.log("Post succesfully updated in Firebase 🔥");
-    updatePostsGrid();
+    console.log("medlem succesfully updated in Firebase 🔥");
+    updateMedlemGrid();
   }
 }

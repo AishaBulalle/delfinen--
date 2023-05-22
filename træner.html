@@ -17,7 +17,146 @@
       <a href="træner.html" class="active">Træner</a>
     </nav>
 
-    <main></main>
-    <script src="app.js" type="module"></script>
+    <main>
+      <h1>Svømmeklubben Delfinen🐬</h1>
+
+      <section class="tools-grid">
+        <label for="select-sort-by"
+          >Sorter efter:
+          <select id="select-sort-by">
+            <option value="" selected>Not selected</option>
+            <option value="Aktivitetsform">Aktivitetsform</option>
+          </select>
+        </label>
+        <div>
+          <label for="input-search">Søg:</label>
+          <input
+            type="search"
+            id="input-search"
+            placeholder="Søg efter titel"
+          />
+        </div>
+      </section>
+      <section id="medlem" class="grid-container"></section>
+    </main>
+
+    <!-- dialog - create new post -->
+    <dialog id="dialog-create-medlem">
+      <h2>Tilføj nyt medlem</h2>
+      <form id="form-create-medlem" method="dialog" class="dialog-container">
+        <label for="name-new">Navn:</label>
+        <input
+          type="text"
+          id="name-new"
+          name="title"
+          placeholder="Navn"
+          minlength="3"
+          maxlength="100"
+          required
+        />
+        <label for="alder-new">Alder:</label>
+        <input
+          type="number"
+          id="alder-new"
+          name="body"
+          placeholder="Alder"
+          minlength="1"
+          maxlength="70"
+          required
+        />
+        <label for="image-new">Billede:</label>
+        <input
+          type="url"
+          id="image-new"
+          name="image"
+          placeholder="Paste an image URL"
+          required
+        />
+        <label for="aktivitetsform-new">Aktivitetsform:</label>
+        <select id="select-aktivitetsform">
+          <option value="">Not selected</option>
+          <option value="aktiv">Aktiv</option>
+          <option value="passiv">Passiv</option>
+        </select>
+        <label for="medlemskabstype-new">Medlemskabstype:</label>
+        <select id="select-medlemskabstype">
+          <option value="">Not selected</option>
+          <option value="Junior">Junior</option>
+          <option value="Senior">Senior</option>
+        </select>
+        <label for="svømmedisciplin-new">svømmedisciplin:</label>
+        <select id="select-svømmedisciplin">
+          <option value="">Not selected</option>
+          <option value="motionist">motionist</option>
+          <option value="konkurrencesvømmer">konkurrencesvømmer</option>
+        </select>
+        <p class="error-message hide">Error Message Placeholder</p>
+        <button id="btn-create">Tilføj nyt medlem</button>
+      </form>
+      post
+    </dialog>
+
+    <!-- dialog - update post -->
+    <dialog id="dialog-update-medlem">
+      <h2>Update medlem</h2>
+      <form id="form-update-medlem" method="dialog">
+        <label for="title-update">Navn:</label>
+        <input
+          type="text"
+          id="name-update"
+          name="title"
+          placeholder="Navn"
+          minlength="3"
+          maxlength="100"
+          required
+        />
+        <label for="body-update">Alder:</label>
+        <input
+          type="number"
+          id="body-update"
+          name="body"
+          placeholder="Alder"
+          minlength="1"
+          required
+        />
+        <label for="image-update">Billede:</label>
+        <input
+          type="url"
+          id="image-update"
+          name="image"
+          placeholder="Paste an image URL"
+          required
+        />
+        <label for="aktivitetsform-update">Aktivitetsform:</label>
+        <select id="select-aktivitetsform">
+          <option value="aktiv">Aktiv</option>
+          <option value="passiv">Passiv</option>
+        </select>
+        />
+        <label for="medlemskabstype-update">Medlemskabstype:</label>
+        <select id="select-medlemskabstype">
+          <option value="Junior">Junior</option>
+          <option value="Senior">Senior</option>
+        </select>
+        <label for="svømmedisciplin-update">svømmedisciplin:</label>
+        <select id="select-svømmedisciplin">
+          <option value="motionist">motionist</option>
+          <option value="konkurrencesvømmer">konkurrencesvømmer</option>
+        </select>
+        <p class="error-message hide">Error Message Placeholder</p>
+        <button>Update medlem</button>
+      </form>
+    </dialog>
+
+    <!-- dialog - delete post -->
+    <dialog id="dialog-delete-medlem">
+      <h2>Vil du slette dette medlem?</h2>
+      <p id="dialog-delete-medlem-title">Title of medlem</p>
+      <form id="form-delete-medlem" method="dialog">
+        <button type="button" class="btn-cancel">Nej</button>
+        <button>Ja</button>
+      </form>
+    </dialog>
+    <script src="js/app.js" type="module"></script>
   </body>
 </html>

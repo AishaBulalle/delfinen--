@@ -123,7 +123,7 @@ img {
 /* ---------- header styling ---------- */
 header {
   background-color: var(--green);
-  color: var(--text-color-light);
+  colodr: var(--text-color-light);
   padding: 1em;
   text-align: center;
   position: fixed;

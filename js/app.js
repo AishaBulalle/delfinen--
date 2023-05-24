@@ -84,6 +84,7 @@ async function updateMedlemGrid() {
 }
 
 async function createMedlemClicked(event) {
+  console.log(event);
   event.preventDefault();
 
   const form = event.target; // or "this"

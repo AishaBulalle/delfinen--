@@ -6,46 +6,46 @@ import {
 } from "./rest-service.js";
 
 let medlem;
+
 window.addEventListener("load", initApp);
 
 async function initApp() {
   console.log("app.js is runningg 🎉");
   updateMedlemGrid();
+  updateMembersTable();
+
+  document
+    .querySelector("#input-search-cashier")
+    ?.addEventListener("keyup", inputSearchChangedForCashier);
+  document
+    .querySelector("#input-search-button-for-cashier")
+    ?.addEventListener("search", inputSearchChangedForCashier);
+
   document
     .querySelector("#btn-create-medlem")
     ?.addEventListener("click", showCreateMedlemDialog);
   document
     .querySelector("#form-create-medlem")
-    .addEventListener("submit", createMedlemClicked);
+    ?.addEventListener("submit", createMedlemClicked);
 
   document
     .querySelector("#form-update-medlem")
-    .addEventListener("submit", updateMedlemClicked);
+    ?.addEventListener("submit", updateMedlemClicked);
   document
     .querySelector("#form-delete-medlem")
-    .addEventListener("submit", deleteMedlemClicked);
+    ?.addEventListener("submit", deleteMedlemClicked);
   document
     .querySelector("#form-delete-medlem .btn-cancel")
-    .addEventListener("click", deleteCancelClicked);
+    ?.addEventListener("click", deleteCancelClicked);
   document
     .querySelector("#select-sort-by")
-    .addEventListener("change", sortByChanged);
+    ?.addEventListener("change", sortByChanged);
   document
     .querySelector("#input-search")
-    .addEventListener("keyup", inputSearchChanged);
+    ?.addEventListener("keyup", inputSearchChanged);
   document
     .querySelector("#input-search")
-    .addEventListener("search", inputSearchChanged);
-
-  document
-    .querySelector("#coachFilterTop5")
-    .addEventListener("change", filterforCoach);
-  document
-    .querySelector("#coachFilterJunior")
-    .addEventListener("change", filterforCoach);
-  document
-    .querySelector("#coachFilterSenior")
-    .addEventListener("change", filterforCoach);
+    ?.addEventListener("search", inputSearchChanged);
 }
 
 function showMedlemmer(listOfMedlem) {
@@ -90,7 +90,9 @@ async function showMedlem(medlemObject) {
 
 async function updateMedlemGrid() {
   medlem = await getMedlem(); // get posts from rest endpoint and save in variable
-  showMedlemmer(medlem); // show all posts (append to the DOM) with posts as argument
+  showMedlemmer(medlem);
+
+  // show all posts (append to the DOM) with posts as argument
 }
 
 async function createMedlemClicked(event) {
@@ -229,9 +231,9 @@ async function updateMedlemClicked(event) {
   const navn = form.navn.value;
   const billede = form.billede.value;
   const alder = form.alder.value;
-  const aktivitetsform = form.aktivitetsforms.value;
-  const medlemskabstype = form.medlemskabstypes.value;
-  const svømmedisciplin = form.svømmedisciplins.value;
+  const aktivitetsform = form.aktivitetsform.value;
+  const medlemskabstype = form.medlemskabstype.value;
+  const svømmedisciplin = form.svømmedisciplin.value;
 
   const id = form.getAttribute("data-id"); // get id of the post to update - saved in data-id
   const response = await updateMedlem(
@@ -264,21 +266,21 @@ function showMembersForCashier(membersList) {
   document.querySelector("#cashier-members-tbody").textContent = "";
 
   //en row skabes i table for hvert medlem i members array
-  for (const member of membersList) {
-    showMemberForCashier(member);
+  for (const medlem of membersList) {
+    showMemberForCashier(medlem);
   }
 }
 
 //function for creating row member element
-function showMemberForCashier(medlemmer) {
-  const restance = correctRestance(medlemmer);
+function showMemberForCashier(medlemObject) {
+  const restance = correctRestance(medlemObject);
 
   const htmlCashier = /*html*/ `
                     <tr>
-                      <td>${medlemmer.navn}</td>
-                      <td>${medlemmer.alder}</td>
-                      <td>${medlemmer.subscriptionStart}</td>
-                      <td>${medlemmer.subscriptionEnd}</td>
+                      <td>${medlemObject.navn}</td>
+                      <td>${medlemObject.alder}</td>
+                      <td>${medlemObject.medlemskabsstart}</td>
+                      <td>${medlemObject.medlemskabsslut}</td>
                       <td>${restance}</td>
                     </tr>
   `;
@@ -303,20 +305,20 @@ function showMemberForCashier(medlemmer) {
 
     // setting textcontent value equal to clicked member
     document.querySelector(
-      "#cashier-dialog-name"
-    ).textContent = `Navn: ${medlemmer.firstname}`;
+      "#cashier-dialog-navn"
+    ).textContent = `Navn: ${medlemObject.navn}`;
     document.querySelector(
-      "#cashier-dialog-age"
-    ).textContent = `Alder: ${medlemmer.age}`;
+      "#cashier-dialog-alder"
+    ).textContent = `Alder: ${medlemObject.alder}`;
     document.querySelector(
-      "#cashier-dialog-sub-start"
-    ).textContent = `Tilmeldt: ${memberObject.subscriptionStart}`;
+      "#cashier-dialog-medlemskabsstart"
+    ).textContent = `Tilmeldt: ${medlemObject.medlemskabsstart}`;
     document.querySelector(
-      "#cashier-dialog-sub-end"
-    ).textContent = `Medlemskab ophører: ${memberObject.subscriptionEnd}`;
+      "#cashier-dialog-medlemskabsslut"
+    ).textContent = `Medlemskab ophører: ${medlemObject.medlemskabsslut}`;
     document.querySelector(
       "#cashier-dialog-restance"
-    ).textContent = `Restance: ${memberObject.restance}`;
+    ).textContent = `Restance: ${medlemObject.restance}`;
 
     // show modal/dialog
     document.querySelector("#cashier-dialog").showModal();
@@ -329,29 +331,29 @@ function closeCashierDialog() {
 }
 
 //correcting restance to yes/no instead of true/false
-function correctRestance(memberObject) {
+function correctRestance(medlemObject) {
   const noRestance = "0 dkk";
   const priceYouth = "1000 dkk";
   const priceSenior = "1600 dkk";
   const pricePensionist = "1200 dkk";
   const pricePassive = "500 dkk";
 
-  if (memberObject.restance && memberObject.age < 18 && memberObject.active) {
+  if (medlemObject.restance && medlemObject.age < 18 && medlemObject.active) {
     return priceYouth;
   } else if (
-    memberObject.restance &&
-    memberObject.age >= 18 &&
-    memberObject.age < 60 &&
-    memberObject.active
+    medlemObject.restance &&
+    medlemObject.age >= 18 &&
+    medlemObject.age < 60 &&
+    medlemObject.active
   ) {
     return priceSenior;
   } else if (
-    memberObject.restance &&
-    memberObject.age >= 60 &&
-    memberObject.active
+    medlemObject.restance &&
+    medlemObject.age >= 60 &&
+    medlemObject.active
   ) {
     return pricePensionist;
-  } else if (memberObject.restance && !memberObject.active) {
+  } else if (medlemObject.restance && !medlemObject.active) {
     return pricePassive;
   } else {
     return noRestance;
@@ -360,8 +362,8 @@ function correctRestance(memberObject) {
 
 //inserting html article element for accounting overview
 function insertAccountingResults() {
-  let kontingenter = calculateAllSubscriptions(members);
-  let restance = calculateRestance(members);
+  let kontingenter = calculateAllSubscriptions(medlemmer);
+  let restance = calculateRestance(medlemmer);
   let samlet = kontingenter - restance;
 
   document.querySelector("#kontingenter").textContent = kontingenter;
@@ -428,15 +430,25 @@ function cashierFilterByRestance() {
 
   console.log("...");
   if (restance.checked) {
-    memberInRestance = members.filter(checkRestance);
+    memberInRestance = medlemmer.filter(checkRestance);
     showMembersForCashier(memberInRestance);
   } else {
-    showMembersForCashier(members);
+    showMembersForCashier(memlemmer);
   }
 
-  function checkRestance(member) {
-    if (member.restance) {
-      return member;
+  function checkRestance(medlem) {
+    if (medlem.restance) {
+      return medmelm;
     }
   }
+}
+
+async function updateMembersTable() {
+  const tableBody = document.querySelector("#membersTableBody");
+  tableBody.innerHTML = "";
+  members = await getMembers();
+  results = await getResults();
+  console.log(medlem);
+  console.log(results);
+  showMembersForCashier(medlem);
 }

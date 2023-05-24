@@ -18,32 +18,50 @@
     </nav>
 
     <section id="kessere">
-        <input type="search" id="search-kassere" placeholder="Søg" />
-        <button id="button-kassere">Search</button>
-        <article id="regnskab-kassere">
-          <h2>Kontingent oversigt:</h2>
-          <h4>Kontingenter: <span id="kontingenter"></span></h4>
-          <h4>Restance: <span id="restance"></span></h4>
-          <h4>samlet: <span id="samlet"></span></h4>
-          <label for="restance-filter" id="restance-filter-text">Vis medlemmer i restance</label>
-          <input type="checkbox" name="restance-filter" id="restance-filter" />
-        </article>
+      <input type="search" id="search-kassere" placeholder="Søg" />
+      <button id="button-kassere">Search</button>
+      <article id="regnskab-kassere">
+        <h2>Kontingent oversigt:</h2>
+        <h4>Kontingenter: <span id="kontingenter"></span></h4>
+        <h4>Restance: <span id="restance"></span></h4>
+        <h4>samlet: <span id="samlet"></span></h4>
+        <label for="restance-filter" id="restance-filter-text"
+          >Vis medlemmer i restance</label
+        >
+        <input type="checkbox" name="restance-filter" id="restance-filter" />
+      </article>
 
-        <table id="kassere-members">
-          <thead>
-            <tr>
-              <th>Navn</th>
-              <th>Alder</th>
-              <th>Medlemskab start</th>
-              <th>Medlemskab slut</th>
-              <th>restance?</th>
-            </tr>
-          </thead>
-          <tbody id="cashier-members-tbody">
-            <!-- members gets inserted here -->
-          </tbody>
-        </table>
-      </section>
-    <script src="app.js" type="module"></script>
+      <table id="kassere-members">
+        <thead>
+          <tr>
+            <th>Navn</th>
+            <th>Alder</th>
+            <th>Medlemskabsstart</th>
+            <th>Medlemskabsslut</th>
+            <th>restance</th>
+          </tr>
+        </thead>
+        <tbody id="cashier-members-tbody">
+          <!-- members gets inserted here -->
+        </tbody>
+      </table>
+    </section>
+    <dialog id="cashier-dialog">
+      <article>
+        <h2>Medlem:</h2>
+        <ul>
+          <li id="cashier-dialog-navn">Navn:</li>
+          <li id="cashier-dialog-alder">Alder:</li>
+
+          <li id="cashier-dialog-medlemskabsstart">Tilmeldt:</li>
+          <li id="cashier-dialog-medlemskabsslut">Medlemskab ophører:</li>
+          <li id="cashier-dialog-restance">I restance:</li>
+        </ul>
+        <button id="cashier-dialog-btn-close">Close?</button>
+      </article>
+    </dialog>
+    <script src="js/app.js" type="module"></script>
   </body>
 </html>
+
+<

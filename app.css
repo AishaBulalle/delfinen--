@@ -398,3 +398,68 @@ select {
 #btn-create-post {
   margin: 2em;
 }
+
+table,
+th {
+  border: 2px solid aquamarine;
+  width: auto;
+  align-items: center;
+  text-shadow: 4px 4px 4px rgba(76, 57, 241, 0.1);
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-weight: bolder;
+  color: #070707;
+  margin-top: 6px;
+  background-color: cornflowerblue;
+  padding: 4px;
+}
+
+td {
+  border: 1px solid aquamarine;
+  width: auto;
+  align-items: center;
+  text-shadow: 4px 4px 4px rgba(76, 57, 241, 0.1);
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  font-weight: bolder;
+  color: #070707;
+  margin-top: 6px;
+}
+
+#cashier-dialog {
+  background-color: cornflowerblue;
+  align-items: center;
+  padding: 50px;
+  line-height: 1.8;
+  font-weight: bolder;
+}
+
+/* cashier ekstra css*/
+
+#forCashier {
+  padding: 70px;
+}
+
+#restance-filter-text {
+  font-size: large;
+}
+#login-as-text {
+  grid-column: 11;
+}
+
+#cashier-members th,
+#cashier-members td {
+  padding: 10px;
+  text-align: left;
+}
+
+#forCashier table,
+#accounting-section {
+  margin: 0 auto;
+  width: 80%;
+  color: #333;
+}
+.active {
+  background-color: cornflowerblue;
+  color: white;
+}

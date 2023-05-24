@@ -387,7 +387,6 @@ dialog p {
   }
 }
 
-
 .tools-grid input,
 select {
   width: 350px;
@@ -398,4 +397,3 @@ select {
 #btn-create-post {
   margin: 1.5em;
 }
-

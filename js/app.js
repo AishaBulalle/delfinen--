@@ -122,6 +122,8 @@ function sortByChanged(event) {
 
   if (selectedValue === "aktivitetsform") {
     medlem.sort(compareAktivitetsform);
+  } else if (selectedValue === "konkurrencesvømmer") {
+    medlem.sort(compareKonkurrencesvømmer);
   }
 
   showMedlemmer(medlem);
@@ -130,6 +132,23 @@ function sortByChanged(event) {
 function compareAktivitetsform(medlem1, medlem2) {
   return medlem1.aktivitetsform.localeCompare(medlem2.aktivitetsform);
 }
+
+function compareKonkurrencesvømmer(medlem1, medlem2) {
+  return medlem1.konkurrencesvømmer.localeCompare(medlem2.konkurrencesvømmer);
+}
+
+//function search(searchValue) {
+//searchValue = searchValue.toLowerCase();
+
+//const results = age.filter(age);
+
+//function checkAge(age) {
+//const age = Age.age.toLowerCase();
+//return age.includes(searchValue);
+//}
+
+//return results;
+//}
 
 function inputSearchChanged(event) {
   const value = event.target.value;

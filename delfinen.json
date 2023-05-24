@@ -8,6 +8,7 @@
       "svømmedisciplin": "motionist",
       "medlemsskabsstart": "01-02-20",
       "medlemsskabsslut": "01-02-22",
+      "medlemskabstype": "junior",
       "restance": true
     },
     "01": {
@@ -18,6 +19,7 @@
       "svømmedisciplin": "konkurrencesvømmer",
       "medlemsskabsstart": "01-02-20",
       "medlemsskabsslut": "01-02-22",
+      "medlemskabstype": "junior",
       "restance": false
     },
     "02": {
@@ -28,6 +30,7 @@
       "svømmedisciplin": "motionist",
       "medlemsskabsstart": "01-02-20",
       "medlemsskabsslut": "01-02-22",
+      "medlemskabstype": "senior",
       "restance": true
     },
     "03": {
@@ -38,6 +41,7 @@
       "svømmedisciplin": "motionist",
       "medlemsskabsstart": "01-02-20",
       "medlemsskabsslut": "01-02-22",
+      "medlemskabstype": "senior",
       "restance": false
     },
     "04": {
@@ -48,6 +52,7 @@
       "svømmedisciplin": "motionist",
       "medlemsskabsstart": "01-02-20",
       "medlemsskabsslut": "01-02-22",
+      "medlemskabstype": "senior",
       "restance": false
     },
     "05": {
@@ -58,6 +63,7 @@
       "svømmedisciplin": "motionist",
       "medlemsskabsstart": "01-02-20",
       "medlemsskabsslut": "01-02-22",
+      "medlemskabstype": "senior",
       "restance": true
     },
     "06": {
@@ -68,6 +74,7 @@
       "svømmedisciplin": "konkurrencesvømmer",
       "medlemsskabsstart": "01-02-20",
       "medlemsskabsslut": "01-02-22",
+      "medlemskabstype": "senior",
       "restance": false
     },
     "07": {
@@ -78,6 +85,7 @@
       "svømmedisciplin": "konkurrencesvømmer",
       "medlemsskabsstart": "01-02-20",
       "medlemsskabsslut": "01-02-22",
+      "medlemskabstype": "senior",
       "restance": false
     },
     "08": {
@@ -88,6 +96,7 @@
       "svømmedisciplin": "konkurrencesvømmer",
       "medlemsskabsstart": "01-02-20",
       "medlemsskabsslut": "01-02-22",
+      "medlemskabstype": "junior",
       "restance": false
     },
     "09": {
@@ -98,6 +107,7 @@
       "svømmedisciplin": "motionist",
       "medlemsskabsstart": "01-02-20",
       "medlemsskabsslut": "01-02-22",
+      "medlemskabstype": "junior",
       "restance": false
     },
     "10": {
@@ -108,6 +118,7 @@
       "svømmedisciplin": "konkurrencesvømmer",
       "medlemsskabsstart": "01-02-20",
       "medlemsskabsslut": "01-02-22",
+      "medlemskabstype": "junior",
       "restance": false
     }
   }

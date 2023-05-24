@@ -51,10 +51,9 @@ async function showMedlem(medlemObject) {
   
   <article class="grid-item">
         <div class="avatar">
-                <img src=${medlemObject.billede} />
               <div>
-                    <h3>${medlemObject.navn}</h3>
-                    <p>${medlemObject.medlemskabstype}</p>
+                    <h3><b>Navn:</b> ${medlemObject.navn}</h3>
+                    <p><b>medlemskabstype:</b> ${medlemObject.medlemskabstype} <br> <b>Alder:</b>  ${medlemObject.alder}</p>
               </div>
         </div>
         <div>

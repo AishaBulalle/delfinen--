@@ -74,4 +74,12 @@ async function deleteMedlem(id) {
   return response;
 }
 
-export { getMedlem, createMedlem, updateMedlem, deleteMedlem };
+async function getResults() {
+  const response = await fetch(`${endpoint}/medlemmer.json`);
+  const data = await response.json();
+
+  const results = prepareResultsData(data);
+  return results;
+}
+
+export { getMedlem, createMedlem, updateMedlem, deleteMedlem, getResults };

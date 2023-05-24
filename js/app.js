@@ -3,6 +3,7 @@ import {
   createMedlem,
   deleteMedlem,
   updateMedlem,
+  getResults,
 } from "./rest-service.js";
 
 let medlem;
@@ -13,6 +14,10 @@ async function initApp() {
   console.log("app.js is runningg 🎉");
   updateMedlemGrid();
   updateMembersTable();
+
+  document
+    .querySelector("#restance-filter")
+    ?.addEventListener("change", cashierFilterByRestance);
 
   document
     .querySelector("#input-search-cashier")
@@ -279,8 +284,8 @@ function showMemberForCashier(medlemObject) {
                     <tr>
                       <td>${medlemObject.navn}</td>
                       <td>${medlemObject.alder}</td>
-                      <td>${medlemObject.medlemskabsstart}</td>
-                      <td>${medlemObject.medlemskabsslut}</td>
+                      <td>${medlemObject.medlemsskabsstart}</td>
+                      <td>${medlemObject.medlemsskabsslut}</td>
                       <td>${restance}</td>
                     </tr>
   `;
@@ -312,10 +317,10 @@ function showMemberForCashier(medlemObject) {
     ).textContent = `Alder: ${medlemObject.alder}`;
     document.querySelector(
       "#cashier-dialog-medlemskabsstart"
-    ).textContent = `Tilmeldt: ${medlemObject.medlemskabsstart}`;
+    ).textContent = `Tilmeldt: ${medlemObject.medlemsskabsstart}`;
     document.querySelector(
       "#cashier-dialog-medlemskabsslut"
-    ).textContent = `Medlemskab ophører: ${medlemObject.medlemskabsslut}`;
+    ).textContent = `Medlemskab ophører: ${medlemObject.medlemsskabsslut}`;
     document.querySelector(
       "#cashier-dialog-restance"
     ).textContent = `Restance: ${medlemObject.restance}`;
@@ -362,10 +367,9 @@ function correctRestance(medlemObject) {
 
 //inserting html article element for accounting overview
 function insertAccountingResults() {
-  let kontingenter = calculateAllSubscriptions(medlemmer);
-  let restance = calculateRestance(medlemmer);
+  let kontingenter = calculateAllSubscriptions(medlem);
+  let restance = calculateRestance(medlem);
   let samlet = kontingenter - restance;
-
   document.querySelector("#kontingenter").textContent = kontingenter;
   document.querySelector("#restance").textContent = restance;
   document.querySelector("#samlet").textContent = samlet;
@@ -430,15 +434,15 @@ function cashierFilterByRestance() {
 
   console.log("...");
   if (restance.checked) {
-    memberInRestance = medlemmer.filter(checkRestance);
+    memberInRestance = medlem.filter(checkRestance);
     showMembersForCashier(memberInRestance);
   } else {
-    showMembersForCashier(memlemmer);
+    showMembersForCashier(medlem);
   }
 
   function checkRestance(medlem) {
     if (medlem.restance) {
-      return medmelm;
+      return medlem;
     }
   }
 }
@@ -446,9 +450,9 @@ function cashierFilterByRestance() {
 async function updateMembersTable() {
   const tableBody = document.querySelector("#membersTableBody");
   tableBody.innerHTML = "";
-  members = await getMembers();
   results = await getResults();
   console.log(medlem);
   console.log(results);
-  showMembersForCashier(medlem);
+  showMembersForCashier(medlemmer);
+  showCompetitiveMembers(results, medlemmer);
 }

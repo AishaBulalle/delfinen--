@@ -13,7 +13,7 @@ async function initApp() {
   updateMedlemGrid();
   document
     .querySelector("#btn-create-medlem")
-    .addEventListener("click", showCreateMedlemDialog);
+    ?.addEventListener("click", showCreateMedlemDialog);
   document
     .querySelector("#form-create-medlem")
     .addEventListener("submit", createMedlemClicked);
@@ -122,8 +122,8 @@ function sortByChanged(event) {
 
   if (selectedValue === "aktivitetsform") {
     medlem.sort(compareAktivitetsform);
-  } else if (selectedValue === "konkurrencesvømmer") {
-    medlem.sort(compareKonkurrencesvømmer);
+  } else if (selectedValue === "svømmedisciplin") {
+    medlem.sort(compareSvømmedisciplin);
   }
 
   showMedlemmer(medlem);
@@ -133,8 +133,8 @@ function compareAktivitetsform(medlem1, medlem2) {
   return medlem1.aktivitetsform.localeCompare(medlem2.aktivitetsform);
 }
 
-function compareKonkurrencesvømmer(medlem1, medlem2) {
-  return medlem1.konkurrencesvømmer.localeCompare(medlem2.konkurrencesvømmer);
+function compareSvømmedisciplin(medlem1, medlem2) {
+  return medlem1.svømmedisciplin.localeCompare(medlem2.svømmedisciplin);
 }
 
 //function searchMedlemsskabstype(searchValue) {

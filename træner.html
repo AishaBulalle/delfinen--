@@ -150,7 +150,48 @@
         <button>Ja</button>
       </form>
     </dialog>
+    <!-- DOM-manipulation for coach -->
+    <section id="for-træner-section" class="view-content">
+      <article id="for-træner-article">
+        <div id="forTrænerSort-container">
+          <label for="for-træner-sort-by">Sort by: </label>
+          <select name="for-træner-sort-by" id="sortBy-for-træner">
+            <option value="none">Intet</option>
+            <option value="age">alder</option>
+            <option value="time">Tid</option>
+          </select>
+        </div>
+        <div id="forTrænerFilter">
+          <fieldset>
+            <!-- Top 5 filter -->
+            <label for="trænerFilterTop5"
+              >Top 5:
+              <input
+                type="checkbox"
+                name="trænerFilterTop5"
+                id="trænerFilterTop5"
+            /></label>
+            Junior filter
+            <label for="trænerFilterJunior"
+              >Junior:
+              <input
+                type="checkbox"
+                name="trænerFilterJunior"
+                id="trænerFilterJunior"
+            /></label>
 
-    <script src="js/app.js" type="module"></script>
+            Senior filter
+            <label for="trænerFilterSenior"
+              >Senior:
+              <input
+                type="checkbox"
+                name="trænerFilterSenior"
+                id="trænerFilterSenior"
+            /></label>
+          </fieldset>
+          <script src="js/app.js" type="module"></script>
+        </div>
+      </article>
+    </section>
   </body>
 </html>

@@ -453,6 +453,80 @@ async function updateMembersTable() {
   results = await getResults();
   console.log(medlem);
   console.log(results);
-  showMembersForCashier(medlemmer);
-  showCompetitiveMembers(results, medlemmer);
+  showMembersForCashier(medlem);
+  showCompetitiveMembers(results, medlem);
 }
+
+function sortByForTræner(event) {
+  const value = event.target.value;
+
+  if (value === "none") {
+    updateMembersTable();
+  } else if (value === "age" && !isFilterOn) {
+    results.sort(compareAge);
+    showCompetitiveMemberLoop(results);
+  } else if (value === "age" && isFilterOn) {
+    filterList.sort(compareAge);
+    showCompetitiveMemberLoop(filterList);
+  } else if (value === "time" && !isFilterOn) {
+    results.sort(compareTime);
+    showCompetitiveMemberLoop(results);
+  } else if (value === "time" && isFilterOn) {
+    filterList.sort(compareTime);
+    showCompetitiveMemberLoop(filterList);
+  }
+
+  function compareAge(result1, result2) {
+    return result1.member.age - result2.member.age;
+  }
+
+  function compareTime(result1, result2) {
+    return result1.timeMiliSeconds - result2.timeMiliSeconds;
+  }
+}
+
+// ========== filter ========== //
+async function filterforCoach() {
+  const top5 = document.querySelector("#coachFilterTop5");
+  const junior = document.querySelector("#coachFilterJunior");
+  const senior = document.querySelector("#coachFilterSenior");
+
+  if (junior.checked) {
+    filterList = results.filter(isJunior);
+    isFilterOn = true;
+    console.log(filterList);
+    showCompetitiveMemberLoop(filterList);
+  } else if (senior.checked) {
+    filterList = results.filter(isSenior);
+    isFilterOn = true;
+    console.log(filterList);
+    showCompetitiveMemberLoop(filterList);
+  } else if (top5.checked) {
+    filterList = results.sort(top5Results).slice(); // .slice bliver brugt til at lave en copy results, som splice går ind og ændre.
+    isFilterOn = true;
+    filterList.splice(5);
+    console.log(filterList);
+    showCompetitiveMemberLoop(filterList);
+  } else {
+    filterList = results;
+    isFilterOn = false;
+    showCompetitiveMemberLoop(results);
+  }
+}
+
+function top5Results(result1, result2) {
+  return result1.timeMiliSeconds - result2.timeMiliSeconds;
+}
+
+function isJunior(result) {
+  return (
+    result.member.age < 18 && result.member.aktivitetsform === "svømmedisciplin"
+  );
+}
+function isSenior(result) {
+  return (
+    result.member.age >= 18 &&
+    result.member.aktivitetsform === "svømmedisciplin"
+  );
+}
+export { showCompetitiveMembers };

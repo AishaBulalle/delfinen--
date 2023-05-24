@@ -30,8 +30,8 @@
         <label for="name-new">Navn:</label>
         <input
           type="text"
-          id="name-new"
-          name="title"
+          id="navn"
+          name="navn"
           placeholder="Navn"
           minlength="3"
           maxlength="100"
@@ -40,8 +40,8 @@
         <label for="alder-new">Alder:</label>
         <input
           type="number"
-          id="alder-new"
-          name="body"
+          id="alder"
+          name="alder"
           placeholder="Alder"
           minlength="1"
           maxlength="70"
@@ -50,25 +50,25 @@
         <label for="image-new">Billede:</label>
         <input
           type="url"
-          id="image-new"
-          name="image"
+          id="billede"
+          name="billede"
           placeholder="Paste an image URL"
           required
         />
         <label for="aktivitetsform-new">Aktivitetsform:</label>
-        <select id="select-aktivitetsform">
+        <select id="aktivitetsform">
           <option value="">Not selected</option>
           <option value="aktiv">Aktiv</option>
           <option value="passiv">Passiv</option>
         </select>
         <label for="medlemskabstype-new">Medlemskabstype:</label>
-        <select id="select-medlemskabstype">
+        <select id="medlemskabstype">
           <option value="">Not selected</option>
           <option value="Junior">Junior</option>
           <option value="Senior">Senior</option>
         </select>
         <label for="svømmedisciplin-new">svømmedisciplin:</label>
-        <select id="select-svømmedisciplin">
+        <select id="svømmedisciplin">
           <option value="">Not selected</option>
           <option value="motionist">motionist</option>
           <option value="konkurrencesvømmer">konkurrencesvømmer</option>
@@ -76,7 +76,6 @@
         <p class="error-message hide">Error Message Placeholder</p>
         <button id="btn-create">Tilføj nyt medlem</button>
       </form>
-      post
     </dialog>
 
     <!-- dialog - update post -->
@@ -86,47 +85,49 @@
         <label for="title-update">Navn:</label>
         <input
           type="text"
-          id="name-update"
-          name="title"
+          id="navn-update"
+          name="navn"
           placeholder="Navn"
           minlength="3"
           maxlength="100"
           required
         />
-        <label for="body-update">Alder:</label>
+        <label for="alder-update">Alder:</label>
         <input
           type="number"
-          id="body-update"
-          name="body"
+          id="alder-update"
+          name="alder"
           placeholder="Alder"
           minlength="1"
           required
         />
-        <label for="image-update">Billede:</label>
+        <label for="billede-update">Billede:</label>
         <input
           type="url"
-          id="image-update"
-          name="image"
+          id="billede-update"
+          name="billede"
           placeholder="Paste an image URL"
           required
         />
-        <label for="aktivitetsform-update">Aktivitetsform:</label>
-        <select id="select-aktivitetsform">
+        <label for="aktivitetsform-update">Aktivitetsform:</label> <br />
+        <select id="aktivitetsforms">
           <option value="aktiv">Aktiv</option>
           <option value="passiv">Passiv</option>
         </select>
-        />
-        <label for="medlemskabstype-update">Medlemskabstype:</label>
-        <select id="select-medlemskabstype">
+        <br />
+        <label for="medlemskabstype-update">Medlemskabstype:</label> <br />
+        <select id="medlemskabstypes">
           <option value="Junior">Junior</option>
           <option value="Senior">Senior</option>
         </select>
-        <label for="svømmedisciplin-update">svømmedisciplin:</label>
-        <select id="select-svømmedisciplin">
+        <br />
+        <label for="svømmedisciplin-update">Svømmedisciplin:</label> <br />
+        <select id="svømmedisciplins">
           <option value="motionist">motionist</option>
           <option value="konkurrencesvømmer">konkurrencesvømmer</option>
         </select>
         <p class="error-message hide">Error Message Placeholder</p>
+        <br />
         <button>Update medlem</button>
       </form>
     </dialog>

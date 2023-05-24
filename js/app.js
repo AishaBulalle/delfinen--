@@ -183,9 +183,9 @@ function updateClicked(medlem) {
   updateForm.navn.value = medlem.navn; // set title input in update form from post title
   updateForm.billede.value = medlem.billede; // set body input in update form post body
   updateForm.alder.value = medlem.alder; // set image input in update form post image
-  updateForm.aktivitetsform.value = medlem.aktivitetsform; // set title input in update form from post title
-  updateForm.medlemskabstype.value = medlem.medlemskabstype; // set body input in update form post body
-  updateForm.svømmedisciplin.value = medlem.svømmedisciplin; // set image input in update form post image
+  updateForm.aktivitetsforms.value = medlem.aktivitetsform; // set title input in update form from post title
+  updateForm.medlemskabstypes.value = medlem.medlemskabstype; // set body input in update form post body
+  updateForm.svømmedisciplins.value = medlem.svømmedisciplin; // set image input in update form post image
   updateForm.setAttribute("data-id", medlem.id); // set data-id attribute of post you want to update (... to use when update)
   document.querySelector("#dialog-update-medlem").showModal(); // show update modal
 }

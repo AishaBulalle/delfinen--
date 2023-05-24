@@ -5,88 +5,110 @@
       "billede": "https://static.standard.co.uk/2022/04/24/17/newFile-2.jpg?width=968&auto=webp&quality=50&crop=968%3A645%2Csmart",
       "alder": "14",
       "aktivitetsform": "aktiv",
-      "medlemskabstype": "junior",
-      "svømmedisciplin": "motionist"
+      "svømmedisciplin": "motionist",
+      "medlemsskabsstart": "01-02-20",
+      "medlemsskabsslut": "01-02-22",
+      "restance": true
     },
     "01": {
       "navn": "Morten",
       "billede": "https://caerphilly.observer/wp-content/uploads/2019/04/Carson-Price-600x778.jpg",
       "alder": "13",
       "aktivitetsform": "aktiv",
-      "medlemskabstype": "junior",
-      "svømmedisciplin": "konkurrencesvømmer"
+      "svømmedisciplin": "konkurrencesvømmer",
+      "medlemsskabsstart": "01-02-20",
+      "medlemsskabsslut": "01-02-22",
+      "restance": false
     },
     "02": {
       "navn": "saynab",
       "billede": "https://media.glamourmagazine.co.uk/photos/6138d5938cb9467036e114be/16:9/w_2560%2Cc_limit/hani_sf.jpg",
       "alder": "24",
       "aktivitetsform": "aktiv",
-      "medlemskabstype": "senior",
-      "svømmedisciplin": "motionist"
+      "svømmedisciplin": "motionist",
+      "medlemsskabsstart": "01-02-20",
+      "medlemsskabsslut": "01-02-22",
+      "restance": true
     },
     "03": {
       "navn": "Noah",
       "billede": "https://media.istockphoto.com/id/174658064/photo/young-man-in-his-20s-with-great-smile.jpg?s=612x612&w=0&k=20&c=IoX11Mr8JDdAzVt0PcPpuREu4r6uY79QZMOMwhOh3Jg=",
       "alder": "21",
       "aktivitetsform": "passiv",
-      "medlemskabstype": "senior",
-      "svømmedisciplin": "motionist"
+      "svømmedisciplin": "motionist",
+      "medlemsskabsstart": "01-02-20",
+      "medlemsskabsslut": "01-02-22",
+      "restance": false
     },
     "04": {
       "navn": "Alejandro",
       "billede": "https://cdn.britannica.com/05/204705-050-B54E422F/Alejandro-Jodorowsky-2017.jpg",
       "alder": "71",
       "aktivitetsform": "passiv",
-      "medlemskabstype": "senior",
-      "svømmedisciplin": "motionist"
+      "svømmedisciplin": "motionist",
+      "medlemsskabsstart": "01-02-20",
+      "medlemsskabsslut": "01-02-22",
+      "restance": false
     },
     "05": {
       "navn": "Mathilde",
       "billede": "https://t3.ftcdn.net/jpg/00/56/14/04/360_F_56140454_q4nbUmTCcC1ovIJrOL1SxJuaYXwvSz68.jpg",
       "alder": "80",
       "aktivitetsform": "passiv",
-      "medlemskabstype": "senior",
-      "svømmedisciplin": "motionist"
+      "svømmedisciplin": "motionist",
+      "medlemsskabsstart": "01-02-20",
+      "medlemsskabsslut": "01-02-22",
+      "restance": true
     },
     "06": {
       "navn": "Hassan",
       "billede": "https://yt3.googleusercontent.com/nLrZR34BKYBr9DFrXqDPGoKPozr-2hjkLC8cbirXA0BAUqB6mgm_hpvGyVZ1oXyPdU0iWY6w5Wo=s900-c-k-c0x00ffffff-no-rj",
       "alder": "35",
       "aktivitetsform": "aktiv",
-      "medlemskabstype": "senior",
-      "svømmedisciplin": "konkurrencesvømmer"
+      "svømmedisciplin": "konkurrencesvømmer",
+      "medlemsskabsstart": "01-02-20",
+      "medlemsskabsslut": "01-02-22",
+      "restance": false
     },
     "07": {
       "navn": "Patricia",
       "billede": "https://imgix.seoghoer.dk/media/article/patricia.jpg?ixlib=vue-2.8.4&auto=format%2Ccompress&fit=crop&fp-x=0.5&fp-y=0.5",
       "alder": "28",
       "aktivitetsform": "aktiv",
-      "medlemskabstype": "senior",
-      "svømmedisciplin": "konkurrencesvømmer"
+      "svømmedisciplin": "konkurrencesvømmer",
+      "medlemsskabsstart": "01-02-20",
+      "medlemsskabsslut": "01-02-22",
+      "restance": false
     },
     "08": {
       "navn": "Aliyah",
       "billede": "https://thumbs.dreamstime.com/b/portrait-young-attractive-muslim-years-girl-wearing-grey-hijab-traditional-dress-rising-her-eyes-looking-young-muslim-149446249.jpg",
       "alder": "13",
       "aktivitetsform": "aktiv",
-      "medlemskabstype": "junior",
-      "svømmedisciplin": "konkurrencesvømmer"
+      "svømmedisciplin": "konkurrencesvømmer",
+      "medlemsskabsstart": "01-02-20",
+      "medlemsskabsslut": "01-02-22",
+      "restance": false
     },
     "09": {
       "navn": "Deno",
       "billede": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOFi_PpmCuFoxfDW_IoBvSL7LgBI5h5aUvZw&usqp=CAU",
       "alder": "16",
       "aktivitetsform": "passiv",
-      "medlemskabstype": "junior",
-      "svømmedisciplin": "motionist"
+      "svømmedisciplin": "motionist",
+      "medlemsskabsstart": "01-02-20",
+      "medlemsskabsslut": "01-02-22",
+      "restance": false
     },
     "10": {
       "navn": "Xiaco",
       "billede": "https://thumbs.dreamstime.com/b/studio-shot-chinese-boy-26100743.jpg",
       "alder": "9",
       "aktivitetsform": "aktiv",
-      "medlemskabstype": "junior",
-      "svømmedisciplin": "konkurrencesvømmer"
+      "svømmedisciplin": "konkurrencesvømmer",
+      "medlemsskabsstart": "01-02-20",
+      "medlemsskabsslut": "01-02-22",
+      "restance": false
     }
   }
 }

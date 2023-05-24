@@ -17,7 +17,33 @@
       <a href="træner.html">Træner</a>
     </nav>
 
-    <main></main>
+    <section id="kessere">
+        <input type="search" id="search-kassere" placeholder="Søg" />
+        <button id="button-kassere">Search</button>
+        <article id="regnskab-kassere">
+          <h2>Kontingent oversigt:</h2>
+          <h4>Kontingenter: <span id="kontingenter"></span></h4>
+          <h4>Restance: <span id="restance"></span></h4>
+          <h4>samlet: <span id="samlet"></span></h4>
+          <label for="restance-filter" id="restance-filter-text">Vis medlemmer i restance</label>
+          <input type="checkbox" name="restance-filter" id="restance-filter" />
+        </article>
+
+        <table id="kassere-members">
+          <thead>
+            <tr>
+              <th>Navn</th>
+              <th>Alder</th>
+              <th>Medlemskab start</th>
+              <th>Medlemskab slut</th>
+              <th>restance?</th>
+            </tr>
+          </thead>
+          <tbody id="cashier-members-tbody">
+            <!-- members gets inserted here -->
+          </tbody>
+        </table>
+      </section>
     <script src="app.js" type="module"></script>
   </body>
 </html>

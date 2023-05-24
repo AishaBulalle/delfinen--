@@ -137,14 +137,14 @@ function compareKonkurrencesvømmer(medlem1, medlem2) {
   return medlem1.konkurrencesvømmer.localeCompare(medlem2.konkurrencesvømmer);
 }
 
-//function search(searchValue) {
+//function searchMedlemsskabstype(searchValue) {
 //searchValue = searchValue.toLowerCase();
 
-//const results = age.filter(age);
+//const results = medlemsskabstype.filter(checkMedlemsskabstype);
 
-//function checkAge(age) {
-//const age = Age.age.toLowerCase();
-//return age.includes(searchValue);
+//function checkMedlemsskabstype(medlemsskabstype) {
+//const medlemsskabstype = medlemsskabstype.medlemsskabstype.toLowerCase();
+//return medlemsskabstype.includes(searchValue);
 //}
 
 //return results;

@@ -1,6 +1,6 @@
 import { prepareData } from "./helpers.js";
 
-const endpoint = "https://delfin-54ecb-default-rtdb.firebaseio.com/";
+const endpoint = "https://delfinen-1c436-default-rtdb.firebaseio.com/";
 
 async function getMedlem() {
   const response = await fetch(`${endpoint}/medlemmer.json`);

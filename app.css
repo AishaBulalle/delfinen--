@@ -436,7 +436,7 @@ td {
   margin-top: 6px;
 }
 
-#cashier-dialog {
+#kassere-dialog {
   background-color: cornflowerblue;
   align-items: center;
   padding: 50px;
@@ -446,7 +446,7 @@ td {
 
 /* cashier ekstra css*/
 
-#forCashier {
+#kessere {
   padding: 70px;
 }
 
@@ -457,14 +457,14 @@ td {
   grid-column: 11;
 }
 
-#cashier-members th,
-#cashier-members td {
+#kassere-members th,
+#kassere-members td {
   padding: 10px;
   text-align: left;
 }
 
-#forCashier table,
-#accounting-section {
+#kessere table,
+#regnskab-kassere {
   margin: 0 auto;
   width: 80%;
   color: #333;
@@ -472,4 +472,8 @@ td {
 .active {
   background-color: cornflowerblue;
   color: white;
+}
+
+h2 {
+  text-decoration: underline;
 }

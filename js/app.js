@@ -457,37 +457,29 @@ async function updateMembersTable() {
   showCompetitiveMembers(results, medlem);
 }
 
-function sortByForTræner(event) {
-  const value = event.target.value;
+let filterList;
+let isFilterOn;
 
-  if (value === "none") {
-    updateMembersTable();
-  } else if (value === "age" && !isFilterOn) {
-    results.sort(compareAge);
-    showCompetitiveMemberLoop(results);
-  } else if (value === "age" && isFilterOn) {
-    filterList.sort(compareAge);
-    showCompetitiveMemberLoop(filterList);
-  } else if (value === "time" && !isFilterOn) {
-    results.sort(compareTime);
-    showCompetitiveMemberLoop(results);
-  } else if (value === "time" && isFilterOn) {
-    filterList.sort(compareTime);
-    showCompetitiveMemberLoop(filterList);
+async function showCompetitiveMembers(results, medlemmer) {
+  // event listener til filtre
+  document
+    .querySelector("#coachFilterJunior")
+    .addEventListener("change", filterforCoach);
+  document
+    .querySelector("#coachFilterSenior")
+    .addEventListener("change", filterforCoach);
+
+  for (const result of results) {
+    const medlem = medlemmer.find((medlem) => medlem.id === result.medlemId);
+    result.medlem = medlem;
+    console.log(result);
+    console.log(medlemmer);
   }
 
-  function compareAge(result1, result2) {
-    return result1.member.age - result2.member.age;
-  }
-
-  function compareTime(result1, result2) {
-    return result1.timeMiliSeconds - result2.timeMiliSeconds;
-  }
+  showCompetitiveMemberLoop(results);
 }
 
-// ========== filter ========== //
 async function filterforCoach() {
-  const top5 = document.querySelector("#coachFilterTop5");
   const junior = document.querySelector("#coachFilterJunior");
   const senior = document.querySelector("#coachFilterSenior");
 
@@ -501,12 +493,6 @@ async function filterforCoach() {
     isFilterOn = true;
     console.log(filterList);
     showCompetitiveMemberLoop(filterList);
-  } else if (top5.checked) {
-    filterList = results.sort(top5Results).slice(); // .slice bliver brugt til at lave en copy results, som splice går ind og ændre.
-    isFilterOn = true;
-    filterList.splice(5);
-    console.log(filterList);
-    showCompetitiveMemberLoop(filterList);
   } else {
     filterList = results;
     isFilterOn = false;
@@ -514,19 +500,15 @@ async function filterforCoach() {
   }
 }
 
-function top5Results(result1, result2) {
-  return result1.timeMiliSeconds - result2.timeMiliSeconds;
-}
-
 function isJunior(result) {
   return (
-    result.member.age < 18 && result.member.aktivitetsform === "svømmedisciplin"
+    result.medlem.alder < 18 &&
+    result.medlem.svømmedisciplin === "konkurrencesvømmer"
   );
 }
 function isSenior(result) {
   return (
-    result.member.age >= 18 &&
-    result.member.aktivitetsform === "svømmedisciplin"
+    result.medlem.alder >= 18 &&
+    result.medlem.svømmedisciplin === "konkurrencesvømmer"
   );
 }
-export { showCompetitiveMembers };

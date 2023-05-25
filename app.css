@@ -477,3 +477,15 @@ td {
 h2 {
   text-decoration: underline;
 }
+
+label {
+  text-shadow: 2px 2px 2px rgba(76, 57, 241, 0.1);
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+#for-coach-article {
+  text-align: center;
+}

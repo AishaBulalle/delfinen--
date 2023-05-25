@@ -54,10 +54,10 @@ async function initApp() {
 }
 
 function showMedlemmer(listOfMedlem) {
-  document.querySelector("#medlem").innerHTML = ""; 
+  document.querySelector("#medlem").innerHTML = "";
 
   for (const medlem of listOfMedlem) {
-    showMedlem(medlem); 
+    showMedlem(medlem);
   }
 }
 
@@ -83,7 +83,7 @@ async function showMedlem(medlemObject) {
   
   `;
 
-  document.querySelector("#medlem").insertAdjacentHTML("beforeend", html); 
+  document.querySelector("#medlem").insertAdjacentHTML("beforeend", html);
 
   document
     .querySelector("#medlem article:last-child .btn-delete")
@@ -96,19 +96,17 @@ async function showMedlem(medlemObject) {
 async function updateMedlemGrid() {
   medlem = await getMedlem();
   showMedlemmer(medlem);
-
 }
 
 async function createMedlemClicked(event) {
   console.log(event);
   event.preventDefault();
 
-  const form = event.target; 
+  const form = event.target;
   const navn = form.navn.value;
   const billede = form.billede.value;
   const alder = form.alder.value;
   const aktivitetsform = form.aktivitetsform.value;
-  const medlemskabstype = form.medlemskabstype.value;
   const svømmedisciplin = form.svømmedisciplin.value;
 
   const response = await createMedlem(
@@ -116,14 +114,13 @@ async function createMedlemClicked(event) {
     billede,
     alder,
     aktivitetsform,
-    medlemskabstype,
     svømmedisciplin
   );
   if (response.ok) {
     console.log("New medlem succesfully added to Firebase 🔥");
-    form.reset(); 
+    form.reset();
     updateMedlemGrid();
-    event.target.parentNode.close(); 
+    event.target.parentNode.close();
     hideErrorMessage();
   } else {
     showErrorMessage("Something went wrong. Please, try again!");
@@ -166,7 +163,8 @@ function searchMedlem(searchValue) {
 }
 
 function showCreateMedlemDialog() {
-  document.querySelector("#dialog-create-medlem").showModal(); 
+  document.querySelector("#dialog-create-medlem").showModal();
+}
 
 function showErrorMessage(message) {
   document.querySelector(".error-message").textContent = message;
@@ -179,15 +177,15 @@ function hideErrorMessage() {
 }
 
 function updateClicked(medlem) {
-  const updateForm = document.querySelector("#form-update-medlem"); 
-  updateForm.navn.value = medlem.navn; 
-  updateForm.billede.value = medlem.billede; 
-  updateForm.alder.value = medlem.alder; 
-  updateForm.aktivitetsforms.value = medlem.aktivitetsform; 
-  updateForm.date.value = medlem.medlemsskabsstart; 
-  updateForm.Enddate.value = medlem.medlemsskabsslut; 
+  const updateForm = document.querySelector("#form-update-medlem");
+  updateForm.navn.value = medlem.navn;
+  updateForm.billede.value = medlem.billede;
+  updateForm.alder.value = medlem.alder;
+  updateForm.aktivitetsforms.value = medlem.aktivitetsform;
+  updateForm.date.value = medlem.medlemsskabsstart;
+  updateForm.Enddate.value = medlem.medlemsskabsslut;
   updateForm.svømmedisciplins.value = medlem.svømmedisciplin;
-  updateForm.setAttribute("data-id", medlem.id); 
+  updateForm.setAttribute("data-id", medlem.id);
   document.querySelector("#dialog-update-medlem").showModal();
 }
 
@@ -196,7 +194,7 @@ function deleteClicked(medlem) {
     medlem.navn;
   document
     .querySelector("#form-delete-medlem")
-    .setAttribute("data-id", medlem.id); 
+    .setAttribute("data-id", medlem.id);
   document.querySelector("#dialog-delete-medlem").showModal();
 }
 
@@ -205,8 +203,8 @@ function deleteCancelClicked() {
 }
 
 async function deleteMedlemClicked(event) {
-  const id = event.target.getAttribute("data-id"); 
-  const response = await deleteMedlem(id); 
+  const id = event.target.getAttribute("data-id");
+  const response = await deleteMedlem(id);
 
   if (response.ok) {
     console.log("New medlem succesfully deleted from Firebase 🔥");
@@ -215,24 +213,22 @@ async function deleteMedlemClicked(event) {
 }
 
 async function updateMedlemClicked(event) {
-  const form = event.target; 
+  const form = event.target;
   const navn = form.navn.value;
   const billede = form.billede.value;
   const alder = form.alder.value;
-  const aktivitetsform = form.aktivitetsform.value;
-  const medlemskabstype = form.medlemskabstype.value;
-  const svømmedisciplin = form.svømmedisciplin.value;
+  const aktivitetsform = form.aktivitetsforms.value;
+  const svømmedisciplin = form.svømmedisciplins.value;
 
-  const id = form.getAttribute("data-id"); 
+  const id = form.getAttribute("data-id");
   const response = await updateMedlem(
     id,
     navn,
     billede,
     alder,
     aktivitetsform,
-    medlemskabstype,
     svømmedisciplin
-  ); 
+  );
 
   if (response.ok) {
     console.log("medlem succesfully updated in Firebase 🔥");
@@ -272,37 +268,35 @@ function showMemberForCashier(medlemObject) {
     .querySelector("#cashier-members-tbody")
     .insertAdjacentHTML("beforeend", htmlCashier);
 
- 
   document
     .querySelector("#cashier-members-tbody tr:last-child")
     .addEventListener("click", cashierMemberClicked);
 }
-  function cashierMemberClicked(event) {
-    event.preventDefault;
+function cashierMemberClicked(event) {
+  event.preventDefault;
 
-    document
-      .querySelector("#cashier-dialog-btn-close")
-      .addEventListener("click", closeCashierDialog);
+  document
+    .querySelector("#cashier-dialog-btn-close")
+    .addEventListener("click", closeCashierDialog);
 
-    document.querySelector(
-      "#cashier-dialog-navn"
-    ).textContent = `Navn: ${medlemObject.navn}`;
-    document.querySelector(
-      "#cashier-dialog-alder"
-    ).textContent = `Alder: ${medlemObject.alder}`;
-    document.querySelector(
-      "#cashier-dialog-medlemskabsstart"
-    ).textContent = `Tilmeldt: ${medlemObject.medlemsskabsstart}`;
-    document.querySelector(
-      "#cashier-dialog-medlemskabsslut"
-    ).textContent = `Medlemskab ophører: ${medlemObject.medlemsskabsslut}`;
-    document.querySelector(
-      "#cashier-dialog-restance"
-    ).textContent = `Restance: ${medlemObject.restance}`;
+  document.querySelector(
+    "#cashier-dialog-navn"
+  ).textContent = `Navn: ${medlemObject.navn}`;
+  document.querySelector(
+    "#cashier-dialog-alder"
+  ).textContent = `Alder: ${medlemObject.alder}`;
+  document.querySelector(
+    "#cashier-dialog-medlemskabsstart"
+  ).textContent = `Tilmeldt: ${medlemObject.medlemsskabsstart}`;
+  document.querySelector(
+    "#cashier-dialog-medlemskabsslut"
+  ).textContent = `Medlemskab ophører: ${medlemObject.medlemsskabsslut}`;
+  document.querySelector(
+    "#cashier-dialog-restance"
+  ).textContent = `Restance: ${medlemObject.restance}`;
 
-    document.querySelector("#cashier-dialog").showModal();
-  }
-
+  document.querySelector("#cashier-dialog").showModal();
+}
 
 function closeCashierDialog() {
   document.querySelector("#cashier-dialog").close();
@@ -490,6 +484,4 @@ function isSenior(result) {
     result.medlem.alder >= 18 &&
     result.medlem.svømmedisciplin === "konkurrencesvømmer"
   );
-
-  }
 }

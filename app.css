@@ -489,3 +489,27 @@ label {
 #for-coach-article {
   text-align: center;
 }
+
+#home {
+  object-fit: cover;
+  height: 450px;
+  max-height: fit-content;
+  border-radius: 100%;
+}
+
+@media screen and (min-width: 600px) {
+  .grid-container2 {
+    grid-template-areas: "nav nav section1 main1";
+    display: grid;
+  }
+}
+section1 {
+  justify-content: center;
+  text-align: center;
+  margin: 1.5em;
+}
+
+main1 {
+  margin: 2em;
+  z-index: 999;
+}

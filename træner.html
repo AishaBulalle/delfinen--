@@ -9,7 +9,6 @@
   </head>
 
   <body>
-    <!-- Nav Bar with links -->
     <nav>
       <a href="index.html">Home</a>
       <a href="kasserer.html">Kasserer</a>
@@ -31,7 +30,6 @@
         </label>
         <div id="forCoachFilter">
           <fieldset>
-            <!-- Junior filter -->
             <label for="coachFilterJunior"
               >Junior:
               <input
@@ -40,7 +38,6 @@
                 id="coachFilterJunior"
             /></label>
 
-            <!-- Senior filter -->
             <label for="coachFilterSenior"
               >Senior:
               <input
@@ -54,7 +51,7 @@
 
       <section id="medlem" class="grid-container"></section>
     </main>
-    <!-- dialog - create new post -->
+    
     <dialog id="dialog-create-medlem">
       <h2>Tilføj nyt medlem</h2>
       <form id="form-create-medlem" method="dialog" class="dialog-container">
@@ -86,17 +83,27 @@
           placeholder="Paste an image URL"
           required
         />
+        <label for="date-new">Start på medlemsskab:</label>
+        <input
+          type="text"
+          id="date"
+          name="date"
+          placeholder="Opstarts dato"
+          required
+        />
+        <label for="date-end">Afslutnings på medlemsskab:</label>
+        <input
+          type="text"
+          id="Enddate"
+          name="Enddate"
+          placeholder="Slut dato"
+          required
+        />
         <label for="aktivitetsform-new">Aktivitetsform:</label>
         <select id="aktivitetsform">
           <option value="">Not selected</option>
           <option value="aktiv">Aktiv</option>
           <option value="passiv">Passiv</option>
-        </select>
-        <label for="medlemskabstype-new">Medlemskabstype:</label>
-        <select id="medlemskabstype">
-          <option value="">Not selected</option>
-          <option value="Junior">Junior</option>
-          <option value="Senior">Senior</option>
         </select>
         <label for="svømmedisciplin-new">svømmedisciplin:</label>
         <select id="svømmedisciplin">
@@ -109,14 +116,13 @@
       </form>
     </dialog>
 
-    <!-- dialog - update post -->
     <dialog id="dialog-update-medlem">
       <h2>Update medlem</h2>
       <form id="form-update-medlem" method="dialog">
-        <label for="title-update">Navn:</label>
+        <label for="navn-update">Navn:</label>
         <input
           type="text"
-          id="navn-update"
+          id="navn"
           name="navn"
           placeholder="Navn"
           minlength="3"
@@ -126,7 +132,7 @@
         <label for="alder-update">Alder:</label>
         <input
           type="number"
-          id="alder-update"
+          id="alder"
           name="alder"
           placeholder="Alder"
           minlength="1"
@@ -135,21 +141,31 @@
         <label for="billede-update">Billede:</label>
         <input
           type="url"
-          id="billede-update"
+          id="billede"
           name="billede"
           placeholder="Paste an image URL"
+          required
+        />
+        <label for="date-update">Start på medlemsskab:</label>
+        <input
+          type="text"
+          id="date"
+          name="date"
+          placeholder="Opstarts dato"
+          required
+        />
+        <label for="date-end-update">Afslutnings på medlemsskab:</label>
+        <input
+          type="text"
+          id="Enddate"
+          name="Enddate"
+          placeholder="Opstarts dato"
           required
         />
         <label for="aktivitetsform-update">Aktivitetsform:</label> <br />
         <select id="aktivitetsforms">
           <option value="aktiv">Aktiv</option>
           <option value="passiv">Passiv</option>
-        </select>
-        <br />
-        <label for="medlemskabstype-update">Medlemskabstype:</label> <br />
-        <select id="medlemskabstypes">
-          <option value="Junior">Junior</option>
-          <option value="Senior">Senior</option>
         </select>
         <br />
         <label for="svømmedisciplin-update">Svømmedisciplin:</label> <br />
@@ -162,7 +178,6 @@
         <button>Update medlem</button>
       </form>
     </dialog>
-    <!-- dialog - delete post -->
     <dialog id="dialog-delete-medlem">
       <h2>Vil du slette dette medlem?</h2>
       <p id="dialog-delete-medlem-title">Title of medlem</p>

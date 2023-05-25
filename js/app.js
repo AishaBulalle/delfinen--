@@ -54,10 +54,10 @@ async function initApp() {
 }
 
 function showMedlemmer(listOfMedlem) {
-  document.querySelector("#medlem").innerHTML = ""; // reset the content of section#posts
+  document.querySelector("#medlem").innerHTML = ""; 
 
   for (const medlem of listOfMedlem) {
-    showMedlem(medlem); // for every post object in listOfPosts, call showPost
+    showMedlem(medlem); 
   }
 }
 
@@ -83,7 +83,7 @@ async function showMedlem(medlemObject) {
   
   `;
 
-  document.querySelector("#medlem").insertAdjacentHTML("beforeend", html); // append html to the DOM - section#posts
+  document.querySelector("#medlem").insertAdjacentHTML("beforeend", html); 
 
   document
     .querySelector("#medlem article:last-child .btn-delete")
@@ -94,18 +94,16 @@ async function showMedlem(medlemObject) {
 }
 
 async function updateMedlemGrid() {
-  medlem = await getMedlem(); // get posts from rest endpoint and save in variable
+  medlem = await getMedlem();
   showMedlemmer(medlem);
 
-  // show all posts (append to the DOM) with posts as argument
 }
 
 async function createMedlemClicked(event) {
   console.log(event);
   event.preventDefault();
 
-  const form = event.target; // or "this"
-  // extract the values from inputs from the form
+  const form = event.target; 
   const navn = form.navn.value;
   const billede = form.billede.value;
   const alder = form.alder.value;
@@ -120,13 +118,12 @@ async function createMedlemClicked(event) {
     aktivitetsform,
     medlemskabstype,
     svømmedisciplin
-  ); // use values to create a new post
-  // check if response is ok - if the response is successful
+  );
   if (response.ok) {
     console.log("New medlem succesfully added to Firebase 🔥");
-    form.reset(); // reset the form (clears inputs)
+    form.reset(); 
     updateMedlemGrid();
-    event.target.parentNode.close(); // the dialog
+    event.target.parentNode.close(); 
     hideErrorMessage();
   } else {
     showErrorMessage("Something went wrong. Please, try again!");
@@ -154,19 +151,6 @@ function compareSvømmedisciplin(medlem1, medlem2) {
   return medlem1.svømmedisciplin.localeCompare(medlem2.svømmedisciplin);
 }
 
-//function searchMedlemsskabstype(searchValue) {
-//searchValue = searchValue.toLowerCase();
-
-//const results = medlemsskabstype.filter(checkMedlemsskabstype);
-
-//function checkMedlemsskabstype(medlemsskabstype) {
-//const medlemsskabstype = medlemsskabstype.medlemsskabstype.toLowerCase();
-//return medlemsskabstype.includes(searchValue);
-//}
-
-//return results;
-//}
-
 function inputSearchChanged(event) {
   const value = event.target.value;
   const medlemToShow = searchMedlem(value);
@@ -182,8 +166,7 @@ function searchMedlem(searchValue) {
 }
 
 function showCreateMedlemDialog() {
-  document.querySelector("#dialog-create-medlem").showModal(); // show create dialog
-}
+  document.querySelector("#dialog-create-medlem").showModal(); 
 
 function showErrorMessage(message) {
   document.querySelector(".error-message").textContent = message;
@@ -196,33 +179,34 @@ function hideErrorMessage() {
 }
 
 function updateClicked(medlem) {
-  const updateForm = document.querySelector("#form-update-medlem"); // reference to update form in dialog
-  updateForm.navn.value = medlem.navn; // set title input in update form from post title
-  updateForm.billede.value = medlem.billede; // set body input in update form post body
-  updateForm.alder.value = medlem.alder; // set image input in update form post image
-  updateForm.aktivitetsforms.value = medlem.aktivitetsform; // set title input in update form from post title
-  updateForm.medlemskabstypes.value = medlem.medlemskabstype; // set body input in update form post body
-  updateForm.svømmedisciplins.value = medlem.svømmedisciplin; // set image input in update form post image
-  updateForm.setAttribute("data-id", medlem.id); // set data-id attribute of post you want to update (... to use when update)
-  document.querySelector("#dialog-update-medlem").showModal(); // show update modal
+  const updateForm = document.querySelector("#form-update-medlem"); 
+  updateForm.navn.value = medlem.navn; 
+  updateForm.billede.value = medlem.billede; 
+  updateForm.alder.value = medlem.alder; 
+  updateForm.aktivitetsforms.value = medlem.aktivitetsform; 
+  updateForm.date.value = medlem.medlemsskabsstart; 
+  updateForm.Enddate.value = medlem.medlemsskabsslut; 
+  updateForm.svømmedisciplins.value = medlem.svømmedisciplin;
+  updateForm.setAttribute("data-id", medlem.id); 
+  document.querySelector("#dialog-update-medlem").showModal();
 }
 
 function deleteClicked(medlem) {
   document.querySelector("#dialog-delete-medlem-title").textContent =
-    medlem.navn; // show title of post you want to delete
+    medlem.navn;
   document
     .querySelector("#form-delete-medlem")
-    .setAttribute("data-id", medlem.id); // set data-id attribute of post you want to delete (... to use when delete)
-  document.querySelector("#dialog-delete-medlem").showModal(); // show delete dialog
+    .setAttribute("data-id", medlem.id); 
+  document.querySelector("#dialog-delete-medlem").showModal();
 }
 
 function deleteCancelClicked() {
-  document.querySelector("#dialog-delete-medlem").close(); // close dialog
+  document.querySelector("#dialog-delete-medlem").close();
 }
 
 async function deleteMedlemClicked(event) {
-  const id = event.target.getAttribute("data-id"); // event.target is the delete form
-  const response = await deleteMedlem(id); // call deletePost with id
+  const id = event.target.getAttribute("data-id"); 
+  const response = await deleteMedlem(id); 
 
   if (response.ok) {
     console.log("New medlem succesfully deleted from Firebase 🔥");
@@ -231,8 +215,7 @@ async function deleteMedlemClicked(event) {
 }
 
 async function updateMedlemClicked(event) {
-  const form = event.target; // or "this"
-  // extract the values from inputs from the form
+  const form = event.target; 
   const navn = form.navn.value;
   const billede = form.billede.value;
   const alder = form.alder.value;
@@ -240,7 +223,7 @@ async function updateMedlemClicked(event) {
   const medlemskabstype = form.medlemskabstype.value;
   const svømmedisciplin = form.svømmedisciplin.value;
 
-  const id = form.getAttribute("data-id"); // get id of the post to update - saved in data-id
+  const id = form.getAttribute("data-id"); 
   const response = await updateMedlem(
     id,
     navn,
@@ -249,7 +232,7 @@ async function updateMedlemClicked(event) {
     aktivitetsform,
     medlemskabstype,
     svømmedisciplin
-  ); // call updatePost with arguments
+  ); 
 
   if (response.ok) {
     console.log("medlem succesfully updated in Firebase 🔥");
@@ -258,25 +241,20 @@ async function updateMedlemClicked(event) {
 }
 
 let memberInRestance;
-// ========== Cashier functions ========== //
 
 function showMembersForCashier(membersList) {
-  //#cashier-members-tbody sættes til en variable kaldt "table"
   const table = document.querySelector("#cashier-members-tbody");
   table.innerHTML = "";
 
   insertAccountingResults();
 
-  //alle rows i tabel nulstilles til tom string
   document.querySelector("#cashier-members-tbody").textContent = "";
 
-  //en row skabes i table for hvert medlem i members array
   for (const medlem of membersList) {
     showMemberForCashier(medlem);
   }
 }
 
-//function for creating row member element
 function showMemberForCashier(medlemObject) {
   const restance = correctRestance(medlemObject);
 
@@ -294,21 +272,18 @@ function showMemberForCashier(medlemObject) {
     .querySelector("#cashier-members-tbody")
     .insertAdjacentHTML("beforeend", htmlCashier);
 
-  // adding evenlistener for showing dialog view on table row subject
+ 
   document
     .querySelector("#cashier-members-tbody tr:last-child")
     .addEventListener("click", cashierMemberClicked);
-
-  //function for creating dialog view(cashier)
+}
   function cashierMemberClicked(event) {
     event.preventDefault;
 
-    // adding evenlistener for close btn in dialog view
     document
       .querySelector("#cashier-dialog-btn-close")
       .addEventListener("click", closeCashierDialog);
 
-    // setting textcontent value equal to clicked member
     document.querySelector(
       "#cashier-dialog-navn"
     ).textContent = `Navn: ${medlemObject.navn}`;
@@ -325,47 +300,51 @@ function showMemberForCashier(medlemObject) {
       "#cashier-dialog-restance"
     ).textContent = `Restance: ${medlemObject.restance}`;
 
-    // show modal/dialog
     document.querySelector("#cashier-dialog").showModal();
   }
-}
 
-//close cashier dialog
+
 function closeCashierDialog() {
   document.querySelector("#cashier-dialog").close();
 }
 
-//correcting restance to yes/no instead of true/false
 function correctRestance(medlemObject) {
+  console.log("yaaay");
   const noRestance = "0 dkk";
   const priceYouth = "1000 dkk";
   const priceSenior = "1600 dkk";
   const pricePensionist = "1200 dkk";
   const pricePassive = "500 dkk";
 
-  if (medlemObject.restance && medlemObject.age < 18 && medlemObject.active) {
+  if (
+    medlemObject.restance &&
+    medlemObject.alder < 18 &&
+    medlemObject.aktivitetsform === "aktiv"
+  ) {
     return priceYouth;
   } else if (
     medlemObject.restance &&
-    medlemObject.age >= 18 &&
-    medlemObject.age < 60 &&
-    medlemObject.active
+    medlemObject.alder >= 18 &&
+    medlemObject.alder < 60 &&
+    medlemObject.aktivitetsform === "aktiv"
   ) {
     return priceSenior;
   } else if (
     medlemObject.restance &&
     medlemObject.age >= 60 &&
-    medlemObject.active
+    medlemObject.aktivitetsform === "aktiv"
   ) {
     return pricePensionist;
-  } else if (medlemObject.restance && !medlemObject.active) {
+  } else if (
+    medlemObject.restance &&
+    medlemObject.aktivitetsform === "passiv"
+  ) {
     return pricePassive;
   } else {
     return noRestance;
   }
 }
 
-//inserting html article element for accounting overview
 function insertAccountingResults() {
   let kontingenter = calculateAllSubscriptions(medlem);
   let restance = calculateRestance(medlem);
@@ -375,23 +354,22 @@ function insertAccountingResults() {
   document.querySelector("#samlet").textContent = samlet;
 }
 
-//calculating sum of all subscriptions
 function calculateAllSubscriptions(membersList) {
   let result = 0;
 
   for (let i = 0; i < membersList.length; i++) {
     const element = membersList[i];
-    if (element.active && element.age < 18) {
-      // active u18 =+ 1000,-
+    if (element.aktivitetsform === "aktiv" && element.alder < 18) {
       result += 1000;
-    } else if (element.active && element.age >= 18 && element.age <= 60) {
-      // active 18+ =+ 1600,-
+    } else if (
+      element.aktivitetsform === "aktiv" &&
+      element.alder >= 18 &&
+      element.alder <= 60
+    ) {
       result += 1600;
-    } else if (element.active && element.age > 60) {
-      // active 60+ = (1600 * 0,75) = 1200,-
+    } else if (element.aktivitetsform === "aktiv" && element.alder > 60) {
       result += 1200;
-    } else if (!element.active) {
-      // inactive = 500,-
+    } else if (element.aktivitetsform === "passiv") {
       result += 500;
     }
   }
@@ -399,28 +377,31 @@ function calculateAllSubscriptions(membersList) {
   return result;
 }
 
-//calculating sum of members in restance
 function calculateRestance(membersList) {
   let result = 0;
 
   for (let i = 0; i < membersList.length; i++) {
     const element = membersList[i];
-    if (element.restance && element.active && element.age < 18) {
-      // active u18 =+ 1000,-
+    if (
+      element.restance &&
+      element.aktivitetsform === "aktiv" &&
+      element.alder < 18
+    ) {
       result += 1000;
     } else if (
       element.restance &&
-      element.active &&
-      element.age >= 18 &&
-      element.age <= 60
+      element.aktivitetsform === "aktiv" &&
+      element.alder >= 18 &&
+      element.alder <= 60
     ) {
-      // active 18+ =+ 1600,-
       result += 1600;
-    } else if (element.restance && element.active && element.age > 60) {
-      // active 60+ = (1600 * 0,75) = 1200,-
+    } else if (
+      element.restance &&
+      element.aktivitetsform === "aktiv" &&
+      element.alder > 60
+    ) {
       result += 1200;
-    } else if (element.restance && !element.active) {
-      // inactive = 500,-
+    } else if (element.restance && element.aktivitetsform === "passiv") {
       result += 500;
     }
   }
@@ -428,7 +409,6 @@ function calculateRestance(membersList) {
   return result;
 }
 
-//filtering cashiers list by restance
 function cashierFilterByRestance() {
   const restance = document.querySelector("#restance-filter");
 
@@ -461,7 +441,6 @@ let filterList;
 let isFilterOn;
 
 async function showCompetitiveMembers(results, medlemmer) {
-  // event listener til filtre
   document
     .querySelector("#coachFilterJunior")
     .addEventListener("change", filterforCoach);
@@ -511,4 +490,6 @@ function isSenior(result) {
     result.medlem.alder >= 18 &&
     result.medlem.svømmedisciplin === "konkurrencesvømmer"
   );
+
+  }
 }

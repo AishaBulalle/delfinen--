@@ -411,7 +411,7 @@ select {
 
 table,
 th {
-  border: 2px solid aquamarine;
+  border: 2px solid var(--green);
   width: auto;
   align-items: center;
   text-shadow: 4px 4px 4px rgba(76, 57, 241, 0.1);
@@ -420,12 +420,12 @@ th {
   font-weight: bolder;
   color: #070707;
   margin-top: 6px;
-  background-color: cornflowerblue;
+  background-color: #02596d;
   padding: 4px;
 }
 
 td {
-  border: 1px solid aquamarine;
+  border: 1px solid var(--green);
   width: auto;
   align-items: center;
   text-shadow: 4px 4px 4px rgba(76, 57, 241, 0.1);
